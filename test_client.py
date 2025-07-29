@@ -34,10 +34,10 @@ message_history = [
 ]
 
 
-async def test_evaluate_tool_calls():
+async def test_evaluate_tool_call():
     async with client:
         result = await client.call_tool(
-            "evaluate_tool_calls",
+            "evaluate_tool_call",
             {"available_tools": available_tools, "message_history": message_history},
         )
         print("Evaluation Result: ", result)
@@ -45,4 +45,4 @@ async def test_evaluate_tool_calls():
         print(f"Reason: {result.data.reason}")
 
 
-asyncio.run(test_evaluate_tool_calls())
+asyncio.run(test_evaluate_tool_call())

@@ -27,9 +27,9 @@ class EvaluationResult(BaseModel):
 
 
 @mcp.tool(
-    name="evaluate_tool_calls",
+    name="evaluate_tool_call",
     description="""
-    Double check Agent Tool Calls with evaluate_tool_calls. Evaluate whether an AI agent correctly used available tools in a conversation context.
+    Double check Agent Tool Calls with evaluate_tool_call. Evaluate whether an AI agent correctly used available tools in a conversation context.
 
     Parameters:
     - available_tools: Array of tool definitions
@@ -83,7 +83,7 @@ class EvaluationResult(BaseModel):
     }
     """,
 )
-def evaluate_tool_calls(
+def evaluate_tool_call(
     available_tools: list[dict], message_history: list[dict]
 ) -> EvaluationResult:
     """

@@ -38,7 +38,7 @@ The `example_configs/` directory contains ready-to-use configurations for differ
 
 ## Quotient MCP Functions
 
-### `evaluate_tool_calls`
+### `evaluate_tool_call`
 
 Evaluates tool call correctness in conversation contexts.
 
