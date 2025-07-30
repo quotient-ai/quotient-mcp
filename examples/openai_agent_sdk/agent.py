@@ -114,8 +114,6 @@ async def setup_quotient_mcp():
     quotient_mcp = MCPServerStreamableHttp(
         params={
             "url": "https://mcp.quotientai.co/mcp/",
-            # Add any additional headers if needed for authentication
-            # "headers": {"Authorization": "Bearer your-token"}
         },
         name="Quotient MCP Server",
     )
