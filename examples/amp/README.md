@@ -1,4 +1,4 @@
-### `amp` Directory
+### `amp`
 [Get Started with Amp](https://ampcode.com/manual#getting-started)
 
 The `amp` directory contains configuration files for Amp integration:

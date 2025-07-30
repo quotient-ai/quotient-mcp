@@ -1,4 +1,4 @@
-### `.cursor` Directory
+### `.cursor`
 
 The `.cursor` directory contains configuration files for Cursor IDE integration:
 
