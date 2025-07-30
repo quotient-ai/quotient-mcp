@@ -4,6 +4,9 @@ An MCP server for evaluating tool calls and AI agent interactions. Analyzes and 
 
 ## Streamable HTTP Remote MCP Server
 The Quotient MCP is available at [https://mcp.quotientai.co/mcp/](https://mcp.quotientai.co/mcp/)
+
+**Note:** Many MCP clients do not yet support streamable HTTP remote MCP servers. We are actively developing stdio support and npx package distribution for broader client compatibility.
+
 ## Quick Start
 
 ### Docker
@@ -164,12 +167,10 @@ This repository contains a collection of agent configurations and code examples 
 ### Integration Examples
 
 - **[OpenAI Agent SDK](examples/openai_agent_sdk/)** - Complete integration example with the OpenAI Agents SDK, including multi-agent setup with MCP server connectivity
-
-### Configuration Files
-
-- **[Cursor IDE](example_configs/.cursor/)** - Configuration files and rules for Cursor IDE integration
-- **[Claude Code](example_configs/claude_code/)** - Configuration files for Claude Desktop integration
+- **[Cursor IDE](examples/.cursor/)** - Configuration files and rules for Cursor IDE integration
+- **[Claude Code](examples/claude_code/)** - Configuration files for Claude Desktop integration
 
 We will continue to add new integrations as they become available.
+
 
 
