@@ -178,6 +178,7 @@ This repository contains a collection of agent configurations and code examples 
 
 ### Integration Examples
 
+- **[AMP](examples/amp/)** - Configuration files and rules for AMP agentic coding tool extension or cli
 - **[OpenAI Agent SDK](examples/openai_agent_sdk/)** - Complete integration example with the OpenAI Agents SDK, including multi-agent setup with MCP server connectivity
 - **[Cursor IDE](examples/.cursor/)** - Configuration files and rules for Cursor IDE integration
 - **[Claude Code](examples/claude_code/)** - Configuration files for Claude Code integration
