@@ -21,25 +21,12 @@ The server will be available at `http://localhost:8888` with a health check at `
 
 Install the package:
 ```bash
-# Using uv (recommended)
 uv sync
-
-# Or using pip in virtual environment
-python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-pip install -e .
 ```
 
 #### Option 1: Stdio Transport (for MCP clients)
 
 Run with stdio transport for direct MCP client integration:
-```bash
-# After activating virtual environment
-source .venv/bin/activate
-python server.py --transport stdio
-```
-
-Or using uv run (without activating venv):
 ```bash
 uv run python server.py --transport stdio
 ```
@@ -50,24 +37,13 @@ This mode is designed for integration with MCP clients that manage the server pr
 
 Run the HTTP server:
 ```bash
-# After activating virtual environment
-source .venv/bin/activate
-python server.py --transport http --port 8888
-```
-
-Or using uv run:
-```bash
 uv run python server.py --transport http --port 8888
 ```
 ### Testing
 
 Test the server functionality:
 ```bash
-# Activate virtual environment first
-source .venv/bin/activate
-
-# Test the MCP client functionality  
-python test_client.py
+uv run python test_client.py
 ```
 
 ## Quotient MCP Functions
