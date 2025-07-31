@@ -2,6 +2,8 @@
 Quotient MCP Server
 """
 
+import argparse
+import sys
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 from fastmcp import FastMCP
@@ -13,7 +15,7 @@ mcp = FastMCP("quotient-mcp-server")
 
 @mcp.custom_route("/health", methods=["GET"])
 async def health_check(_request: Request):
-    """Health check endpoint for deployment platforms"""
+    """Health check endpoint for deployment platforms (HTTP transport only)"""
     return JSONResponse({"status": "ok"})
 
 
@@ -115,8 +117,43 @@ def evaluate_tool_call(
         raise e  # re-raise the original exception and let fastmcp handle it
 
 
-if __name__ == "__main__":
-    import os
+def main():
+    """Main entry point with argument parsing for transport selection"""
+    parser = argparse.ArgumentParser(description="Quotient MCP Server")
+    parser.add_argument(
+        "--transport",
+        choices=["stdio", "http"],
+        default="http",
+        help="Transport method: stdio for local MCP clients, http for remote access"
+    )
+    parser.add_argument(
+        "--port",
+        type=int,
+        default=None,
+        help="Port for HTTP transport (defaults to PORT env var or 8888)"
+    )
+    parser.add_argument(
+        "--host",
+        default="0.0.0.0",
+        help="Host for HTTP transport (default: 0.0.0.0)"
+    )
+    
+    args = parser.parse_args()
+    
+    if args.transport == "stdio":
+        # Run with stdio transport for local MCP clients
+        mcp.run(transport="stdio")
+    else:
+        # Run with HTTP transport for remote access
+        import os
+        port = args.port or int(os.environ.get("PORT", 8888))
+        mcp.run(
+            transport="http", 
+            host=args.host, 
+            port=port, 
+            stateless_http=True
+        )
 
-    port = int(os.environ.get("PORT", 8888))
-    mcp.run(transport="http", host="0.0.0.0", port=port, stateless_http=True)
+
+if __name__ == "__main__":
+    main()

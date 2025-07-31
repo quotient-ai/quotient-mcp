@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "quotient-mcp": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--with", "fastmcp>=2.10.6",
+        "--with", "mcp==1.12.2",
+        "--with", "requests>=2.28.0",
+        "fastmcp",
+        "run",
+        "/absolute/path/to/your/quotient-mcp/server.py"
+      ]
+    }
+  }
+}
