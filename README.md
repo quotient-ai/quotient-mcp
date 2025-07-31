@@ -5,7 +5,7 @@ An MCP server for evaluating tool calls and AI agent interactions. Analyzes and 
 ## Streamable HTTP Remote MCP Server
 The Quotient MCP is available at [https://mcp.quotientai.co/mcp/](https://mcp.quotientai.co/mcp/)
 
-**Note:** Many MCP clients do not yet support streamable HTTP remote MCP servers. We are actively developing stdio support and npx package distribution for broader client compatibility.
+**Note:** The server supports both HTTP transport (for remote hosting) and stdio transport (for local MCP client integration).
 
 ## Quick Start
 
@@ -19,18 +19,54 @@ The server will be available at `http://localhost:8888` with a health check at `
 
 ### Local Installation
 
+Install the package:
 ```bash
-uv install
+# Using uv (recommended)
+uv sync
+
+# Or using pip in virtual environment
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+pip install -e .
 ```
+
+#### Option 1: Stdio Transport (for MCP clients)
+
+Run with stdio transport for direct MCP client integration:
+```bash
+# After activating virtual environment
+source .venv/bin/activate
+python server.py --transport stdio
+```
+
+Or using uv run (without activating venv):
+```bash
+uv run python server.py --transport stdio
+```
+
+This mode is designed for integration with MCP clients that manage the server process directly through standard input/output.
+
+#### Option 2: HTTP Transport (for remote hosting)
 
 Run the HTTP server:
 ```bash
-python server.py
+# After activating virtual environment
+source .venv/bin/activate
+python server.py --transport http --port 8888
 ```
-### Test Script
 
-Run the included test client to test the MCP server.
+Or using uv run:
 ```bash
+uv run python server.py --transport http --port 8888
+```
+### Testing
+
+Test the server functionality:
+```bash
+# Activate virtual environment first
+source .venv/bin/activate
+
+# Test the MCP client functionality  
 python test_client.py
 ```
 
@@ -168,9 +204,7 @@ This repository contains a collection of agent configurations and code examples 
 
 - **[OpenAI Agent SDK](examples/openai_agent_sdk/)** - Complete integration example with the OpenAI Agents SDK, including multi-agent setup with MCP server connectivity
 - **[Cursor IDE](examples/.cursor/)** - Configuration files and rules for Cursor IDE integration
-- **[Claude Code](examples/claude_code/)** - Configuration files for Claude Desktop integration
+- **[Claude Code](examples/claude_code/)** - Configuration files for Claude Code integration
+- **[Claude Desktop](examples/claude_desktop/)** - Complete setup guide for Claude Desktop integration with stdio transport
 
 We will continue to add new integrations as they become available.
-
-
-
