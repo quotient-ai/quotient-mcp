@@ -38,7 +38,7 @@ async def test_evaluate_tool_call():
     async with client:
         result = await client.call_tool(
             "evaluate_tool_call",
-            {"available_tools": available_tools, "message_history": message_history},
+            {"available_tools": available_tools, "message_history": message_history, "model_size": "7B"},
         )
         print("Evaluation Result: ", result)
         print(f"Score: {result.data.score}")

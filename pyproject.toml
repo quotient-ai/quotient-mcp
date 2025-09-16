@@ -3,7 +3,8 @@ name = "quotient-mcp"
 version = "0.1.0"
 description = "Quotient MCP Server"
 readme = "README.md"
-requires-python = ">=3.10"
+package-mode = false
+requires-python = ">=3.10, <4.0"
 dependencies = [
     "fastmcp>=2.10.6",
     "mcp==1.12.2",
