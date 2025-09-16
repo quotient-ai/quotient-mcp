@@ -9,6 +9,7 @@ from starlette.responses import JSONResponse
 from fastmcp import FastMCP
 from pydantic import BaseModel
 import requests
+from typing import Literal
 
 mcp = FastMCP("quotient-mcp-server")
 
@@ -86,7 +87,7 @@ class EvaluationResult(BaseModel):
     """,
 )
 def evaluate_tool_call(
-    available_tools: list[dict], message_history: list[dict]
+    available_tools: list[dict], message_history: list[dict], model_size: Literal["0.5B", "3B", "7B"] = "0.5B"
 ) -> EvaluationResult:
     """
     Evaluates tool calling behavior via the Limbic Tool Use API.
@@ -94,11 +95,19 @@ def evaluate_tool_call(
     Args:
         available_tools: List of tool definitions with name, description, and input_schema
         message_history: Conversation messages with role, content, and optional tool_calls
-
+        model_size: Model size to use for evaluation. Can be "0.5B", "3B", or "7B" (default: "0.5B")
     Returns:
         EvaluationResult with score and detailed reasoning
     """
-    inference_endpoint_url = "https://quotient-ai--tool-call-evaluator-0-5b-api-v0-fastapi-app.modal.run/api/v1/detections/tool-use"
+
+    if model_size == "0.5B":
+        inference_endpoint_url = "https://quotient-ai--tool-call-evaluator-0-5b-api-v0-fastapi-app.modal.run/api/v1/detections/tool-use"
+    elif model_size == "3B":
+        inference_endpoint_url = "https://quotient-ai--tool-call-evaluator-3b-api-v0-fastapi-app.modal.run/api/v1/detections/tool-use"
+    elif model_size == "7B":
+        inference_endpoint_url = "https://quotient-ai--tool-call-evaluator-7b-api-v0-fastapi-app.modal.run/api/v1/detections/tool-use"
+    else:
+        raise ValueError(f"Invalid model size: {model_size}. Must be one of: 0.5B, 3B, 7B")
 
     payload = {"messages": message_history, "available_tools": available_tools}
 
