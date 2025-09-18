@@ -55,7 +55,7 @@ Evaluates tool call correctness in conversation contexts.
 **Input:**
 - `available_tools`: List of tools with schemas
 - `message_history`: Conversation history
-- `model_size`: One of 0.5B, 3B, or 7B (default: 0.5B)
+- `model_size`: One of 3B, or 7B (default: 7B)
 
 **Output:**
 - `score`: `"correct"`, `"incorrect_tool"`, `"incorrect_parameter_names"`, or `"incorrect_parameter_values"`
@@ -63,7 +63,7 @@ Evaluates tool call correctness in conversation contexts.
 
 ## Underlying Model
 
-This MCP server is powered by [**limbic-tool-use**](https://huggingface.co/quotientai/limbic-tool-use-0.5B-32K), specialized language models fine-tuned for evaluating tool usage in AI agent interactions. There are 0.5B, 3B, and 7B versions of this model.
+This MCP server is powered by [**limbic-tool-use**](https://huggingface.co/quotientai/limbic-tool-use-0.5B-32K), specialized language models fine-tuned for evaluating tool usage in AI agent interactions. There are 3B and 7B versions of this model.
 
 ### Example Usage
 
@@ -111,7 +111,7 @@ This MCP server is powered by [**limbic-tool-use**](https://huggingface.co/quoti
       ]
     }
   ],
-  "model_size": "0.5B"
+  "model_size": "7B"
 }
 ```
 
@@ -163,7 +163,7 @@ This MCP server is powered by [**limbic-tool-use**](https://huggingface.co/quoti
       ]
     }
   ],
-  "model_size": "0.5B"
+  "model_size": "7B"
 }
 ```
 
