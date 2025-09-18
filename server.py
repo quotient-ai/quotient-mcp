@@ -10,7 +10,6 @@ from fastmcp import FastMCP
 from pydantic import BaseModel
 import requests
 from typing import Literal
-from datetime import datetime, timezone
 
 mcp = FastMCP("quotient-mcp-server")
 
@@ -89,9 +88,7 @@ class EvaluationResult(BaseModel):
     annotations={
         "title": "Evaluate Tool Call",
         "readOnlyHint": True,
-        "openWorldHint": True,
-        "idempotentHint": True,
-        "destructiveHint": False,
+        "openWorldHint": False,
     },
 )
 def evaluate_tool_call(
